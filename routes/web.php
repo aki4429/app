@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\InquiryController;
+
 Route::get('/', function () {
-    return view('welcome');
+    return 'Laravel app は動作しています';
 });
+
+Route::get('/contact', function () {
+    return view('form');
+    // return view('form2');
+});
+
+Route::post('/contact', [InquiryController::class, 'submit'])->name('inquiry.submit');
+
+?>

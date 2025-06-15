@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inquiry extends Model
 {
     use HasFactory;
+    // app/Models/Inquiry.php
+protected $fillable = ['name', 'company', 'phone', 'email', 'message'];
+
 }
