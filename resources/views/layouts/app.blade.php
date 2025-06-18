@@ -7,6 +7,8 @@
     <title>お問い合わせフォーム</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site') }}"></script>
+
 </head>
 <body>
   <nav class="bg-white border-b border-gray-200">
@@ -23,7 +25,7 @@
     <div class="hidden md:flex space-x-6">
       <a href="http://localhost/blog" class="text-gray-600 hover:text-gray-900">ホーム</a>
       <a href="http://localhost/blog/#portfolio" class="text-gray-600 hover:text-gray-900">制作事例</a>
-      <a href="http://localhost/blog/#price" class="text-gray-600 hover:text-gray-900">料金</a>
+      <a href="http://localhost/blog/#service" class="text-gray-600 hover:text-gray-900">料金</a>
       <a href="http://localhost/blog/#profile" class="text-gray-600 hover:text-gray-900">会社概要</a>
       <a href="http://localhost/blog/colum" class="text-gray-600 hover:text-gray-900">コラム</a>
     </div>

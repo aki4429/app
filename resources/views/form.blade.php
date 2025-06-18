@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('inquiry.submit') }}" class="flex-col justify-center gap-10 px-8" novalidate>
+    <form id="inquiry-form" method="POST" action="{{ route('inquiry.submit') }}" class="flex-col justify-center gap-10 px-8" novalidate>
         @csrf
 
         <!-- お名前 -->
@@ -67,11 +67,25 @@
             @enderror
         </div>
 
+        <input type="hidden" name="g-recaptcha-response" id="recaptcha-token">
+
         <!-- 送信ボタン -->
         <div class="text-right">
             <button type="submit"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded">送信する</button>
         </div>
     </form>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site') }}"></script>
+<script>
+    grecaptcha.ready(function() {
+        document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            grecaptcha.execute('{{ config('services.recaptcha.site') }}', {action: 'submit'}).then(function(token) {
+                document.getElementById('recaptcha-token').value = token;
+                e.target.submit();
+            });
+        });
+    });
+</script>
 </div>
 @endsection
